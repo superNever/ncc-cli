@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "ncc front-end cli",
   "bin": {
-    "ncc": "./bin/ncc"
+    "ncchr": "./bin/ncc"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
