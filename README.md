@@ -25,22 +25,22 @@ Commands:
 > 在src目录中运行`ncc i`,输入业务节点名称，例如我想创建hrwa的wapayment
 模块的paydata代码，那我应该输入`hrwa/wapayment/paydata`，然后选择自己需要的模板
 
-![image]('https://github.com/superNever/ncc-cli/blob/master/docs/init.gif')
+![]('https://github.com/superNever/ncc-cli/blob/master/docs/init.png')
 
 ### ncc a
 > 新增加自定义模板，目前只支持http(s)://xxx.com地址，后期会加入本地缓存文件
 
-![image]('https://github.com/superNever/ncc-cli/blob/master/docs/add.gif')
+![]('https://github.com/superNever/ncc-cli/blob/master/docs/add.png')
 
 ### ncc l
 > 展示所有模板信息
 
-![image]('https://github.com/superNever/ncc-cli/blob/master/docs/list.gif')
+![]('https://github.com/superNever/ncc-cli/blob/master/docs/list.png')
 
 ### ncc d
 > 删除指定模板，内置两个模板不允许删除
 
-![image]('https://github.com/superNever/ncc-cli/blob/master/docs/del.gif')
+![]('https://github.com/superNever/ncc-cli/blob/master/docs/del.png')
 
 
 
