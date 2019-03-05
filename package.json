@@ -1,0 +1,31 @@
+{
+  "name": "ncc",
+  "version": "0.0.1",
+  "description": "ncc front-end cli",
+  "bin": {
+    "ncc": "./bin/ncc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ncc",
+    "front",
+    "cli"
+  ],
+  "author": "supernever",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "clear": "^0.1.0",
+    "cli-table": "^0.3.1",
+    "clui": "^0.3.6",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.19.0",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.2",
+    "ora": "^3.1.0",
+    "rimraf": "^2.6.3"
+  }
+}

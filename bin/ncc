@@ -1,0 +1,53 @@
+#!/usr/bin/env node --harmony
+/**
+ * Created by wanghongxiang on 2019/2/28.
+ */
+'use strict'
+process.env.NODE_PATH = __dirname + '/../node_modules/'
+const program = require('commander');
+const figlet      = require('figlet');
+const chalk       = require('chalk');
+const clear       = require('clear');
+clear()
+console.log(
+    chalk.green(
+        figlet.textSync('NCC-CLI', { horizontalLayout: 'full' })
+    )
+)
+
+program
+    .version(require('../package').version)
+program
+    .usage('<command>')
+program
+    .command('init')
+    .description('初始化')
+    .alias('i')
+    .action(() => {
+        require('../lib/init')()
+    })
+program
+    .command('add')
+    .description('填加自定义模板')
+    .alias('a')
+    .action(() => {
+        require('../lib/add')()
+    })
+program
+    .command('list')
+    .description('展示所有模板')
+    .alias('l')
+    .action(() => {
+        require('../lib/list')()
+    })
+program
+    .command('delete')
+    .description('删除模板')
+    .alias('d')
+    .action(() => {
+        require('../lib/delete')()
+    })
+program.parse(process.argv)
+if (!program.args.length) {
+    program.help()
+}
