@@ -1,71 +1,33 @@
-import React, {Component} from 'react';
+import render from '../../../../hrpub/common/frame/render';
+
+import Action1 from '../actions/action1';
+
+import {createPage} from 'nc-lightapp-front';
+
+import Header from '../components/Header';
+
 import './index.less';
 
-
-import {connect} from '../../../../hrpub/common/store';
-
-class HomePage extends Component {
-    constructor(props) {
-        super(props);
-
-        // 示例为hrhi入职登记的appcode
-        this.appConfig = {
-            pagecode: '60071010p',
-            appcode: '60071010'
-        };
-
-        this.getLanguage = this.getLanguage.bind(this)
-        this.getTemplateData = this.getTemplateData.bind(this);
-    }
-
-    componentDidMount() {
-        this.getLanguage();
-        this.getTemplateData();
-    }
-
-    getTemplateData() {
-        const {createUIDom, dispatch, meta, button} = this.props;
-
-        createUIDom(this.appConfig, (data = {}) => {
-            dispatch({
-                type: 'newNode/update',
-                payload: {
-                    context: data.context
-                }
-            });
-
-            meta.setMeta(data.template || {});
-            button.setButtons(data.button || {});
-        });
-    }
-
-    getLanguage() {
-        this.props.MultiInit.getMultiLang({
-            moduleId: 'hi6007',
-            domainName: 'hrhi',
-            callback: (json, status, init) => {
-                this.props.dispatch({
-                    type: 'newNode/update',
-                    payload: {
-                        language: json
-                    }
-                });
-            }
-        });
-    }
-
-    render() {
-        return (
+const Homepage =  render({
+    actions: {
+        action1: Action1
+    },
+    customData: '哈哈哈'
+})(({props, action, state}, {customData}) => {
+    return (
+        <div>
+            <Header />
+            {props.exam.name}
+            {customData}
             <div>
-                我是内容
-                <div>
-                    多语言
-                    {JSON.stringify(this.props.newNode.language)}
-                </div>
+                <button
+                    onClick={action.action1.alertName}
+                >
+                    我是一点击就会alert的按钮
+                </button>
             </div>
-            
-        );
-    }
-};
+        </div>
+    )
+});
 
-export default connect(HomePage);
+export default createPage({})(Homepage)

@@ -1,18 +1,19 @@
 
+import React from 'react';
+
+import {start, connect} from '../../../../hrpub/common/store/index';
+
 
 import HomePage from '../container';
 
-import {createPage} from 'nc-lightapp-front';
 
-import {start} from 'src/hrpub/common/store';
+import model from '../models/model';
 
-import model from '../store/model';
-
-const Wrapper = createPage({})(HomePage);
+const HomePageWithData = connect(HomePage);
 
 
 start({
     root: document.getElementById('app'),
-    component: <Wrapper />,
+    component: <HomePageWithData/>,
     model: model
 });

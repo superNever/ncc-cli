@@ -1,63 +1,40 @@
-import React, {Component} from 'react';
+
+import React from 'react';
+import render from '../../../../hrpub/common/frame/render';
+
+import Action1 from '../actions/action1';
+
+import {createPage} from 'nc-lightapp-front';
+
+import Header from '../components/Header';
+
 import './index.less';
 
-class HomePage extends Component {
-    constructor(props) {
-        super(props);
-
-        // 示例为hrhi入职登记的appcode
-        this.appConfig = {
-            pagecode: '60071010p',
-            appcode: '60071010'
-        };
-
-        this.state = {
-            language: {},
-            context: {}
-        };
-
-        this.getLanguage = this.getLanguage.bind(this)
-        this.getTemplateData = this.getTemplateData.bind(this);
+const Homepage =  render({
+    actions: {
+        action1: Action1
+    },
+    customData: '哈哈哈',
+    state: {
+        name
     }
-
-    componentDidMount() {
-        this.getLanguage();
-        this.getTemplateData();
-    }
-
-    getTemplateData() {
-        const {createUIDom, dispatch, meta, button} = this.props;
-
-        createUIDom(this.appConfig, (data = {}) => {
-            this.setState({
-                context: data.context
-            });
-
-            meta.setMeta(data.template || {});
-            button.setButtons(data.button || {});
-        });
-    }
-
-    getLanguage() {
-        this.props.MultiInit.getMultiLang({
-            moduleId: 'hi6007',
-            domainName: 'hrhi',
-            callback: (json, status, init) => {
-                this.setState({
-                    language: json
-                });
-            }
-        });
-    }
-
-    render() {
-        return (
+})(({props, action, state}, {customData}) => {
+    return (
+        <div>
+            <Header 
+                name={state.name}
+            />
+            {state.name}
+            {customData}
             <div>
-                多语言
-                {JSON.stringify(this.props.newNode.language)}
+                <button
+                    onClick={action.action1.alertName}
+                >
+                    我是一点击就会alert的按钮
+                </button>
             </div>
-        );
-    }
-};
+        </div>
+    )
+});
 
-export default connect(HomePage);
+export default createPage({})(Homepage)
