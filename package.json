@@ -1,6 +1,6 @@
 {
   "name": "ncchr",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "ncchr cli",
   "bin": {
     "ncchr": "./bin/ncchr"
@@ -30,6 +30,8 @@
     "figlet": "^1.2.1",
     "inquirer": "^6.2.2",
     "ora": "^3.1.0",
-    "rimraf": "^2.6.3"
+    "request": "^2.88.0",
+    "rimraf": "^2.6.3",
+    "semver": "^5.6.0"
   }
 }
