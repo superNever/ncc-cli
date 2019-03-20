@@ -1,28 +1,21 @@
-import React from 'react';
+import render from 'src/hrpub/common/frame/render'
+import heaerAction from '../../actions/header'
 
-import render from '../../../../../hrpub/common/frame/render';
-
-import HeaderAction from './headerAction';
-
-export default render({
+let handleConfig = {
     actions: {
-        header: HeaderAction
-    },
-    state: {
-        headerName: '我是头部的name'
+        header: heaerAction
     }
-})(({props, action, state}) => {
+}
 
+let createDom = ({props, action, state})=>{
     return (
         <div>
-            我是一个头部{props.name}
-            <button
-                onClick={action.header.headerAlert}
-            >
-                我是header里的按钮
-            </button>
-            {state.headerName}
+            <button onClick={action.header.reverseName}>reverse name</button>
+            {
+                props.name
+            }
         </div>
-    );
+    )
+}
 
-});
+export default render(handleConfig)(createDom)
