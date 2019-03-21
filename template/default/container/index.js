@@ -1,6 +1,6 @@
 import React from 'react';
 
-import render from 'src/hrpub/common/frame/render';
+import {render, HrContainer} from 'src/hrpub/common/frame/index';
 
 import MainAction from '../actions/main';
 
@@ -17,16 +17,15 @@ let handleConfig = {
     customData: '哈哈哈',
     state: {
         name: '12345'
-    },
-    scope: ['name']
+    }
 }
-let createDom = ({props, action, state})=>{
+let createDom = ({props, action, state, scope})=>{
     return (
-        <div>
-           <Header name = {state.name}></Header>
-           <button onClick = {action.mainAction.reverseName}>container click</button>
-           {state.name}
-        </div>
+        <HrContainer scope={state}>
+            <Header></Header>
+            <button onClick = {action.mainAction.reverseName}>container click</button>
+            {state.name}
+        </HrContainer> 
     )
 }
 
